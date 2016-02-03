@@ -1,5 +1,7 @@
 function newAddress(){
+    var newMain = require('./index.js');
     var inquirer = require("inquirer");
+    
     //Used to determine which part of contact object to use
     function exist(field, type){
         return function(answers){
@@ -8,9 +10,6 @@ function newAddress(){
             }
         };
     }
-    
-    //Creating the database
-    var contactsDatabase = [];
     
     //Question object for inquirer
     var addContact = [
@@ -186,9 +185,10 @@ function newAddress(){
 
         //Prompt for the contact information
         inquirer.prompt(addContact, function(answer){
-            contactsDatabase.push(answer);
+            newMain.contactsDatabase.push(answer);
+            console.log(newMain.contactsDatabase);
+            newMain.main();
         });
-        console.log(contactsDatabase);
 }
 
 module.exports = {
