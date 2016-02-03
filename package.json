@@ -1,0 +1,23 @@
+{
+  "name": "command_line_address_book",
+  "version": "1.0.0",
+  "description": "this program will allow the user to create an address book for the command line. the user will be able to add entries, search for already added entries, and exit the program.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andyding1/address-book-project.git"
+  },
+  "keywords": [
+    "address",
+    "book"
+  ],
+  "author": "Andy Ding",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andyding1/address-book-project/issues"
+  },
+  "homepage": "https://github.com/andyding1/address-book-project#readme"
+}
