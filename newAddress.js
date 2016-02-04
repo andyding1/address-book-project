@@ -1,5 +1,5 @@
 function newAddress(){
-    var newMain = require('./index.js');
+    var newIndex = require('./index.js');
     var inquirer = require("inquirer");
     
     //Used to determine which part of contact object to use
@@ -185,9 +185,11 @@ function newAddress(){
 
         //Prompt for the contact information
         inquirer.prompt(addContact, function(answer){
-            newMain.contactsDatabase.push(answer);
-            console.log(newMain.contactsDatabase);
-            newMain.main();
+            newIndex.currentIndex++;
+            newIndex.contactsDatabase.push(answer);
+            console.log(newIndex.currentIndex);
+            console.log(newIndex.contactsDatabase);
+            newIndex.editMenu();
         });
 }
 
