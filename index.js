@@ -38,6 +38,7 @@ function mainMenu(){
 function editMenu(){
     var inquirer = require("inquirer");
     var newAdd = require('./newAddress.js');
+    var newEdit = require('./editAddress.js');
     var newDelete = require('./deleteAddress.js');
     
     var editMenu = {
@@ -51,6 +52,7 @@ function editMenu(){
     inquirer.prompt([editMenu], function( answers ) {
     	switch(answers.editMenuKey){
             case 'Edit Address Book Entry':
+                newEdit.editAddress();
                 break;
             case 'Delete Address Book Entry':
                 newDelete.deleteAddress();
