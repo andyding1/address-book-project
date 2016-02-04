@@ -12,9 +12,7 @@ function deleteAddress(){
     	switch(answers.deleteMenuKey){
             case 'Yes':
                 newIndex.currentIndex--;
-                console.log(newIndex.currentIndex);
                 newIndex.contactsDatabase.splice(newIndex.currentIndex,1);
-                console.log(newIndex.contactsDatabase);
                 newIndex.mainMenu();
                 break;
             case 'No':

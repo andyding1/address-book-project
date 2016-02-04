@@ -1,5 +1,6 @@
 function newAddress(){
     var newIndex = require('./index.js');
+    var newDisplay = require('./displayContact.js');
     var inquirer = require("inquirer");
     
     //Used to determine which part of contact object to use
@@ -180,29 +181,11 @@ function newAddress(){
             message: 'Other Country:',
             when: exist('addresses', 'other'),
             validate: validateValue
-        },  
+        },
         {
-            name: 'personalEmail',
-            message: 'Personal Email Address:',
-            when: exist('emailAddresses','personal'),
-            validate: validateValue
-        }, 
-        {
-            name: 'workEmail',
-            message: 'Work Email Address:',
-            when: exist('emailAddresses', 'work'),
-            validate: validateValue
-        }, 
-        {
-            name: 'otherEmail',
-            message: 'Other Email Address:',
-            when: exist('emailAddresses', 'other'),
-            validate: validateValue
-        }, 
-        {
-            name: 'personalPhone',
-            message: 'Personal Phone Number:',
-            when: exist('phoneNumbers', 'personal'),
+            name: 'homePhone',
+            message: 'Home Phone Number:',
+            when: exist('phoneNumbers', 'home'),
             validate: validateValue
         }, 
         {
@@ -222,15 +205,34 @@ function newAddress(){
             message: 'Other Phone Number:',
             when: exist('phoneNumbers', 'other'),
             validate: validateValue
-        }
+        },
+        {
+            name: 'personalEmail',
+            message: 'Personal Email Address:',
+            when: exist('emailAddresses','personal'),
+            validate: validateValue
+        }, 
+        {
+            name: 'workEmail',
+            message: 'Work Email Address:',
+            when: exist('emailAddresses', 'work'),
+            validate: validateValue
+        }, 
+        {
+            name: 'otherEmail',
+            message: 'Other Email Address:',
+            when: exist('emailAddresses', 'other'),
+            validate: validateValue
+        } 
         ];
 
         //Prompt for the contact information
         inquirer.prompt(addContact, function(answer){
             newIndex.currentIndex++;
             newIndex.contactsDatabase.push(answer);
-            console.log(newIndex.currentIndex);
-            console.log(newIndex.contactsDatabase);
+            // console.log(newIndex.currentIndex);
+            // console.log(newIndex.contactsDatabase);
+            newDisplay.displayCard(answer);
             newIndex.editMenu();
         });
 }

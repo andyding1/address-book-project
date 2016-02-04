@@ -1,5 +1,6 @@
 function editAddress(){
     var newIndex = require('./index.js');
+    var newDisplay = require('./displayContact.js');
     var inquirer = require("inquirer");
     
     //Used to determine which part of contact object to use
@@ -208,34 +209,13 @@ function editAddress(){
             when: exist('addresses', 'other'),
             validate: validateValue,
             default: defaultValue(newIndex.contactsDatabase[newIndex.currentIndex-1].otherCountry)
-        },  
+        },
         {
-            name: 'personalEmail',
-            message: 'Personal Email Address:',
-            when: exist('emailAddresses','personal'),
+            name: 'homePhone',
+            message: 'Home Phone Number:',
+            when: exist('phoneNumbers', 'home'),
             validate: validateValue,
-            default: defaultValue(newIndex.contactsDatabase[newIndex.currentIndex-1].personalEmail)
-        }, 
-        {
-            name: 'workEmail',
-            message: 'Work Email Address:',
-            when: exist('emailAddresses', 'work'),
-            validate: validateValue,
-            default: defaultValue(newIndex.contactsDatabase[newIndex.currentIndex-1].workEmail)
-        }, 
-        {
-            name: 'otherEmail',
-            message: 'Other Email Address:',
-            when: exist('emailAddresses', 'other'),
-            validate: validateValue,
-            default: defaultValue(newIndex.contactsDatabase[newIndex.currentIndex-1].otherEmail)
-        }, 
-        {
-            name: 'personalPhone',
-            message: 'Personal Phone Number:',
-            when: exist('phoneNumbers', 'personal'),
-            validate: validateValue,
-            default: defaultValue(newIndex.contactsDatabase[newIndex.currentIndex-1].personalPhone)
+            default: defaultValue(newIndex.contactsDatabase[newIndex.currentIndex-1].homePhone)
         }, 
         {
             name: 'workPhone',
@@ -257,13 +237,34 @@ function editAddress(){
             when: exist('phoneNumbers', 'other'),
             validate: validateValue,
             default: defaultValue(newIndex.contactsDatabase[newIndex.currentIndex-1].otherPhone)
+        },
+        {
+            name: 'personalEmail',
+            message: 'Personal Email Address:',
+            when: exist('emailAddresses','personal'),
+            validate: validateValue,
+            default: defaultValue(newIndex.contactsDatabase[newIndex.currentIndex-1].personalEmail)
+        }, 
+        {
+            name: 'workEmail',
+            message: 'Work Email Address:',
+            when: exist('emailAddresses', 'work'),
+            validate: validateValue,
+            default: defaultValue(newIndex.contactsDatabase[newIndex.currentIndex-1].workEmail)
+        }, 
+        {
+            name: 'otherEmail',
+            message: 'Other Email Address:',
+            when: exist('emailAddresses', 'other'),
+            validate: validateValue,
+            default: defaultValue(newIndex.contactsDatabase[newIndex.currentIndex-1].otherEmail)
         }
         ];
 
         //Prompt for the contact information
         inquirer.prompt(editContact, function(answer){
             newIndex.contactsDatabase[newIndex.currentIndex-1] = answer;
-            console.log(newIndex.contactsDatabase);
+            newDisplay.displayCard(answer);
             newIndex.editMenu();
         });
 }

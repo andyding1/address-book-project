@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/andyding1/address-book-project#readme",
   "dependencies": {
+    "cli-table": "^0.3.1",
     "inquirer": "^0.11.4"
   }
 }
